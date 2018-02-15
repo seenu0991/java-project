@@ -9,26 +9,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datamodel.Identity;
+import exception.IdentityException;
 
 public  class IdentityJDBC implements IdentityDAO {
 
 	
 	@Override
-	public void create(Identity identity) {
+	public void create(Identity identity)  {
 		// TODO Auto-generated method stub
-		
-		Connection conn = null;
+	 Connection conn = null;
 		try
 		{
-			String query = "INSERT INTO  IDENTITIES (uid,display_name,email_id)values(?,?,?)";
 			conn = Dbconnection.getconnection();
+			String query = "INSERT INTO  IDENTITIES (uid,display_name,email_id)values(?,?,?)";
 		final PreparedStatement preparedstatement = conn
 				.prepareStatement(query);
 		preparedstatement.setString(1, identity.getUid());
 		preparedstatement.setString(2,identity.getDisplay_name() );
 		preparedstatement.setString(3,identity.getEmail_id() );
-		
-		}catch(ClassNotFoundException | SQLException e) {
+		final java.sql.Statement st = conn
+				.createStatement();
+		final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
+while (rs.next()) {
+			
+			System.out.println(rs.getString("UID"));
+			System.out.println(rs.getString("DISPLAY_NAME"));
+			System.out.println(rs.getString("EMAIL_ID"));
+			System.out.println(rs.getString(4));
+		}
+		}catch(SQLException e) {
 			System.out.println(e.getMessage());
 		}finally {
 			try {
@@ -48,7 +57,9 @@ public  class IdentityJDBC implements IdentityDAO {
 	public void update(Identity identity) {
 		Connection conn = null;
 		
+		
 		try {
+			conn = Dbconnection.getconnection();
 			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
 			conn = Dbconnection.getconnection();
 			final PreparedStatement preparedstatement = conn
@@ -58,8 +69,17 @@ public  class IdentityJDBC implements IdentityDAO {
 			preparedstatement.setString(3, identity.getEmail_id());
 			preparedstatement.executeUpdate();
 			preparedstatement.close();
-			
-		}catch (SQLException | ClassNotFoundException e) {
+			final java.sql.Statement st = conn
+					.createStatement();
+			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
+while (rs.next()) {
+				
+				System.out.println(rs.getString("UID"));
+				System.out.println(rs.getString("DISPLAY_NAME"));
+				System.out.println(rs.getString("EMAIL_ID"));
+				System.out.println(rs.getString(4));
+			}
+		}catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			try {
@@ -82,8 +102,9 @@ public  class IdentityJDBC implements IdentityDAO {
 		
 		Connection conn = null;
 		try {
-			String query = "DELETE FROM IDENTITIES =? ";
+			
 			conn = Dbconnection.getconnection();
+			String query = "DELETE FROM IDENTITIES =? ";
 			final PreparedStatement preparedstatement = conn
 					.prepareStatement(query);
 			preparedstatement.setString(1, identity.getUid());
@@ -91,8 +112,17 @@ public  class IdentityJDBC implements IdentityDAO {
 			preparedstatement.setString(1, identity.getEmail_id());
 			preparedstatement.executeUpdate();
 			preparedstatement.close();	
-			
-		}catch(SQLException | ClassNotFoundException e) {
+			final java.sql.Statement st = conn
+					.createStatement();
+			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
+while (rs.next()) {
+				
+				System.out.println(rs.getString("UID"));
+				System.out.println(rs.getString("DISPLAY_NAME"));
+				System.out.println(rs.getString("EMAIL_ID"));
+				System.out.println(rs.getString(4));
+			}
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			try {
@@ -133,7 +163,7 @@ public  class IdentityJDBC implements IdentityDAO {
 				identity.setEmail_id(resultSet.getString(3));
 				identities.add(identity);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (SQLException e) {
 		} finally {
 			try {
 				if (connection != null) {
@@ -150,5 +180,8 @@ public  class IdentityJDBC implements IdentityDAO {
 		
 		
 	}
+
 	
-}
+	}
+	
+

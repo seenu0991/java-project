@@ -14,4 +14,21 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib/db.properties</name>
+			<type>1</type>
+			<location>/Users/silambarasan/Desktop/db.properties</location>
+		</link>
+		<link>
+			<name>lib/derbyclient.jar</name>
+			<type>1</type>
+			<location>/Users/silambarasan/Desktop/eclipse/db-derby-10.14.1.0-bin/lib/derbyclient.jar</location>
+		</link>
+		<link>
+			<name>test/db.properties</name>
+			<type>1</type>
+			<location>/Users/silambarasan/Desktop/db.properties</location>
+		</link>
+	</linkedResources>
 </projectDescription>
