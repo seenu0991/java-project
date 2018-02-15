@@ -212,9 +212,9 @@ while (rs.next()) {
 			// given
 			final IdentityJDBC dao = new IdentityJDBC();
 			final Identity identity = new Identity();
-			identity.setUid("091");
-			identity.setDisplay_name("rat");
-			identity.setEmail_id("art@gmail.com");
+			identity.setUid("098");
+			identity.setDisplay_name("val");
+			identity.setEmail_id("");
 
 			dao.create(identity);;
 
