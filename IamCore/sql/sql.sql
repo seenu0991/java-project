@@ -6,7 +6,10 @@ CREATE TABLE IDENTITIES
     email_id VARCHAR(255)
     );
   
-    create table Auth(
+    ALTER TABLE IDENTITIES ADD COLUMN password varchar(255);
+   
+  
+  create table Auth(
 userName int NOT NULL PRIMARY KEY,
 password varchar(255),
 IDENTITY_ID int,
@@ -14,4 +17,4 @@ FOREIGN KEY(IDENTITY_ID)
 REFERENCES IDENTITIES(IDENTITY_ID)
 );
 
-DROP TABLE IDENTITIES
+DROP TABLE IDENTITIES;

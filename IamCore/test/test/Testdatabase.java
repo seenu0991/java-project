@@ -23,7 +23,7 @@ public class Testdatabase {
 		//testConnectAndSelect();
 		//createTest();
 		//delete();
-		testCreateSearchFromDAO();
+		//testCreateSearchFromDAO();
 	}
 		//Connection conn = null;
 		//final String ConnectionString = properties.getProperty("ConnectionString");
@@ -63,20 +63,20 @@ public class Testdatabase {
 	
 		
 		
-		/*private static void createTest() throws SQLException, ClassNotFoundException  {
+		private static void createTest() throws SQLException, ClassNotFoundException  {
 			final Connection connection = Dbconnection.getconnection();
 try {
 	
 			final PreparedStatement preparedStatement = connection
 					.prepareStatement("INSERT INTO IDENTITIES (UID,DISPLAY_NAME,EMAIL_ID) VALUES (?, ?, ?)");
 
-			preparedStatement.setString(1, "234");
-			preparedStatement.setString(2, "seenu");
+			preparedStatement.setString(1, "345");
+			preparedStatement.setString(2, "seenu09");
 			preparedStatement.setString(3, "seenu@microsoft.com");
 			preparedStatement.execute();
-			final java.sql.Statement st = connection
-					.createStatement();
-			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
+			//final java.sql.Statement st = connection
+					//.createStatement();
+			final ResultSet rs = preparedStatement.executeQuery("SELECT * FROM IDENTITIES");
 while (rs.next()) {
 				
 				System.out.println(rs.getString("UID"));
@@ -104,7 +104,7 @@ while (rs.next()) {
 
 
 
-/*private static void update() throws ClassNotFoundException, SQLException 
+private static void update() throws ClassNotFoundException, SQLException 
 {
 final Connection connection = Dbconnection.getconnection();
 
@@ -208,7 +208,7 @@ while (rs.next()) {
 		}
 		*/
 		
-		private static void testCreateSearchFromDAO() {
+		/*private static void testCreateSearchFromDAO() {
 			// given
 			final IdentityJDBC dao = new IdentityJDBC();
 			final Identity identity = new Identity();
@@ -229,7 +229,7 @@ while (rs.next()) {
 			} else {
 				System.out.println("success");
 			}
-		}
+		}*/
 }
 
 		

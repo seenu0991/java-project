@@ -25,9 +25,17 @@ public class Identity {
 	private String uid;
 	@Override
 	public String toString() {
-		return "Identity [uid=" + uid + ", display_name=" + display_name + ", email_id=" + email_id + "]";
+		return "Identity [uid=" + uid + ", display_name=" + display_name + ", email_id=" + email_id + ", password="
+				+ password + "]";
 	}
 	private String display_name;
 	private String email_id;
+	private String password;
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
 }

@@ -23,12 +23,6 @@ public class Dbconnection {
 			final String ConnectionString = "jdbc:derby://localhost:1527/IamDB;create=true";
 			final String username = "test";
 				final String password = "test";
-			//if(inputStream != null && properties!=null)
-			//{
-				//final String ConnectionString = properties.getProperty("ConnectionString");
-				//final String username = properties.getProperty("username");
-				//final String password = properties.getProperty("password");
-					
 				try {
 					Class.forName("org.apache.derby.jdbc.ClientDriver");
 				} catch (ClassNotFoundException e) {

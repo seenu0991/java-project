@@ -1,6 +1,7 @@
 package services;
 
 import java.sql.Connection;
+import java.sql.Statement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,13 +22,16 @@ public  class IdentityJDBC implements IdentityDAO {
 		try
 		{
 			conn = Dbconnection.getconnection();
-			String query = "INSERT INTO  IDENTITIES (uid,display_name,email_id)values(?,?,?)";
+			String query = "INSERT INTO  IDENTITIES (uid,display_name,email_id,password)values(?,?,?,?)";
 		final PreparedStatement preparedstatement = conn
 				.prepareStatement(query);
 		preparedstatement.setString(1, identity.getUid());
 		preparedstatement.setString(2,identity.getDisplay_name() );
 		preparedstatement.setString(3,identity.getEmail_id() );
-		final java.sql.Statement st = conn
+		preparedstatement.setString(4,identity.getPassword() );
+		preparedstatement.executeUpdate();
+		
+		Statement  st = conn
 				.createStatement();
 		final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
 while (rs.next()) {
@@ -35,7 +39,8 @@ while (rs.next()) {
 			System.out.println(rs.getString("UID"));
 			System.out.println(rs.getString("DISPLAY_NAME"));
 			System.out.println(rs.getString("EMAIL_ID"));
-			System.out.println(rs.getString(4));
+			System.out.println(rs.getString("PASSWORD"));
+			
 		}
 		}catch(SQLException e) {
 			System.out.println(e.getMessage());
@@ -60,15 +65,16 @@ while (rs.next()) {
 		
 		try {
 			conn = Dbconnection.getconnection();
-			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
-			conn = Dbconnection.getconnection();
+			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=?,PASSWORD=? WHERE UID=?";
+		
 			final PreparedStatement preparedstatement = conn
 					.prepareStatement(query);
-			preparedstatement.setString(1, identity.getUid());
 			preparedstatement.setString(2, identity.getDisplay_name());
 			preparedstatement.setString(3, identity.getEmail_id());
+			preparedstatement.setString(4, identity.getPassword());
+			preparedstatement.setString(1, identity.getUid());
 			preparedstatement.executeUpdate();
-			preparedstatement.close();
+		//	preparedstatement.close();
 			final java.sql.Statement st = conn
 					.createStatement();
 			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
@@ -77,7 +83,9 @@ while (rs.next()) {
 				System.out.println(rs.getString("UID"));
 				System.out.println(rs.getString("DISPLAY_NAME"));
 				System.out.println(rs.getString("EMAIL_ID"));
-				System.out.println(rs.getString(4));
+				System.out.println(rs.getString("PASSWORD"));
+				System.out.println(rs.getString(5));
+				
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -104,24 +112,15 @@ while (rs.next()) {
 		try {
 			
 			conn = Dbconnection.getconnection();
-			String query = "DELETE FROM IDENTITIES =? ";
+			String query = "DELETE FROM IDENTITIES wherUID =? ";
 			final PreparedStatement preparedstatement = conn
 					.prepareStatement(query);
 			preparedstatement.setString(1, identity.getUid());
-			preparedstatement.setString(1, identity.getDisplay_name());
-			preparedstatement.setString(1, identity.getEmail_id());
+			
 			preparedstatement.executeUpdate();
-			preparedstatement.close();	
-			final java.sql.Statement st = conn
-					.createStatement();
-			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
-while (rs.next()) {
-				
-				System.out.println(rs.getString("UID"));
-				System.out.println(rs.getString("DISPLAY_NAME"));
-				System.out.println(rs.getString("EMAIL_ID"));
-				System.out.println(rs.getString(4));
-			}
+			preparedstatement.close();
+			System.out.println("deleted");
+
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -154,8 +153,9 @@ while (rs.next()) {
 			preparedStatement.setString(1, criteria.getUid());
 			preparedStatement.setString(2, criteria.getDisplay_name());
 			preparedStatement.setString(3, criteria.getEmail_id());
-
-			final ResultSet resultSet = preparedStatement.executeQuery();
+			final java.sql.Statement st = connection
+					.createStatement();
+			final ResultSet resultSet = st.executeQuery("SELECT * FROM IDENTITIES");
 			while (resultSet.next()) {
 				final Identity identity = new Identity();
 				identity.setUid(resultSet.getString(1));
