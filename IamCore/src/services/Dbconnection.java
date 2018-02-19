@@ -20,9 +20,9 @@ public class Dbconnection {
 
 		public static Connection getconnection() throws SQLException{
 			 
-			final String ConnectionString = "jdbc:derby://localhost:1527/IamDB;create=true";
-			final String username = "test";
-				final String password = "test";
+			final String ConnectionString = "jdbc:derby://localhost:1527/sample;create=true";
+			final String username = "root";
+				final String password = "root";
 				try {
 					Class.forName("org.apache.derby.jdbc.ClientDriver");
 				} catch (ClassNotFoundException e) {

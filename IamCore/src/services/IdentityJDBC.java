@@ -12,135 +12,118 @@ import java.util.List;
 import datamodel.Identity;
 import exception.IdentityException;
 
-public  class IdentityJDBC implements IdentityDAO {
+public class IdentityJDBC implements IdentityDAO {
 
-	
 	@Override
-	public void create(Identity identity)  {
+	public void create(Identity identity) {
 		// TODO Auto-generated method stub
-	 Connection conn = null;
-		try
-		{
-			conn = Dbconnection.getconnection();
-			String query = "INSERT INTO  IDENTITIES (uid,display_name,email_id,password)values(?,?,?,?)";
-		final PreparedStatement preparedstatement = conn
-				.prepareStatement(query);
-		preparedstatement.setString(1, identity.getUid());
-		preparedstatement.setString(2,identity.getDisplay_name() );
-		preparedstatement.setString(3,identity.getEmail_id() );
-		preparedstatement.setString(4,identity.getPassword() );
-		preparedstatement.executeUpdate();
-		
-		Statement  st = conn
-				.createStatement();
-		final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
-while (rs.next()) {
-			
-			System.out.println(rs.getString("UID"));
-			System.out.println(rs.getString("DISPLAY_NAME"));
-			System.out.println(rs.getString("EMAIL_ID"));
-			System.out.println(rs.getString("PASSWORD"));
-			
-		}
-		}catch(SQLException e) {
-			System.out.println(e.getMessage());
-		}finally {
-			try {
-				if(conn !=null) {
-					conn.close();
-				}
-			}catch(final SQLException e)
-			{
-				System.out.println(e.getMessage());
-				e.printStackTrace();
-				
-			}
-		}
-		
-	}
-	@Override
-	public void update(Identity identity) {
 		Connection conn = null;
-		
-		
 		try {
 			conn = Dbconnection.getconnection();
-			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=?,PASSWORD=? WHERE UID=?";
-		
-			final PreparedStatement preparedstatement = conn
-					.prepareStatement(query);
+			String query = "INSERT INTO  IDENTITIES (uid,display_name,email_id,password)values(?,?,?,?)";
+			final PreparedStatement preparedstatement = conn.prepareStatement(query);
+			preparedstatement.setString(1, identity.getUid());
 			preparedstatement.setString(2, identity.getDisplay_name());
 			preparedstatement.setString(3, identity.getEmail_id());
 			preparedstatement.setString(4, identity.getPassword());
-			preparedstatement.setString(1, identity.getUid());
 			preparedstatement.executeUpdate();
-		//	preparedstatement.close();
-			final java.sql.Statement st = conn
-					.createStatement();
+
+			Statement st = conn.createStatement();
 			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
-while (rs.next()) {
-				
+			while (rs.next()) {
+
 				System.out.println(rs.getString("UID"));
 				System.out.println(rs.getString("DISPLAY_NAME"));
 				System.out.println(rs.getString("EMAIL_ID"));
 				System.out.println(rs.getString("PASSWORD"));
-				System.out.println(rs.getString(5));
-				
+
 			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
 			try {
-				if(conn !=null) {
+				if (conn != null) {
 					conn.close();
 				}
-			}catch(final SQLException e)
-			{
+			} catch (final SQLException e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
-				
+
 			}
 		}
-		
+
+	}
+
+	@Override
+	public void update(Identity identity) {
+		Connection conn = null;
+
+		try {
+			conn = Dbconnection.getconnection();
+			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
+
+			final PreparedStatement preparedstatement = conn.prepareStatement(query);
+			preparedstatement.setString(1, identity.getDisplay_name());
+			preparedstatement.setString(2, identity.getEmail_id());
+			preparedstatement.setString(3, identity.getUid());
+
+			final int noOfRowsUpdated = preparedstatement.executeUpdate();
+			
+			if(noOfRowsUpdated>0) {
+				System.out.println("Updated");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				
+			} catch (final SQLException e) {
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+
+			}
+		}
+
 	}
 
 	@Override
 	public void delete(Identity identity) {
 		// TODO Auto-generated method stub
-		
+
 		Connection conn = null;
 		try {
-			
+
 			conn = Dbconnection.getconnection();
-			String query = "DELETE FROM IDENTITIES wherUID =? ";
-			final PreparedStatement preparedstatement = conn
-					.prepareStatement(query);
+			String query = "DELETE FROM IDENTITIES where UID =? ";
+			final PreparedStatement preparedstatement = conn.prepareStatement(query);
 			preparedstatement.setString(1, identity.getUid());
-			
-			preparedstatement.executeUpdate();
-			preparedstatement.close();
+
+			int no=preparedstatement.executeUpdate();
 			System.out.println("deleted");
 
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if(conn !=null) {
+				if (conn != null) {
 					conn.close();
 				}
-			}catch(final SQLException e)
-			{
+			} catch (final SQLException e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
-				
+
 			}
 		}
-		
+
 	}
 
 	@Override
 	public List<Identity> search(Identity criteria) {
-		
+
 		final List<Identity> identities = new ArrayList<>();
 		// TODO reduce the number of lines to avoid repetition
 		// the pattern is always the same, improve with your own ideas.
@@ -148,19 +131,27 @@ while (rs.next()) {
 		Connection connection = null;
 		try {
 			connection = Dbconnection.getconnection();
-			final PreparedStatement preparedStatement = connection
-					.prepareStatement("select UID, DISPLAY_NAME, EMAIL FROM IDENTITIES WHERE DISPLAY_NAME = ? OR EMAIL = ? OR UID = ? ");
-			preparedStatement.setString(1, criteria.getUid());
-			preparedStatement.setString(2, criteria.getDisplay_name());
+			
+			final String sqlString = "SELECT DISPLAY_NAME, EMAIL_ID, UID FROM IDENTITIES " + "WHERE (? IS NULL OR DISPLAY_NAME LIKE ?) "
+					+ "AND (? IS NULL OR EMAIL_ID LIKE ?) " + "AND (? IS NULL OR UID = ?)";
+			
+			final PreparedStatement preparedStatement = connection.prepareStatement(sqlString);
+
+			preparedStatement.setString(1, criteria.getDisplay_name());
+			preparedStatement.setString(2, criteria.getDisplay_name() + "%");
 			preparedStatement.setString(3, criteria.getEmail_id());
-			final java.sql.Statement st = connection
-					.createStatement();
-			final ResultSet resultSet = st.executeQuery("SELECT * FROM IDENTITIES");
+			preparedStatement.setString(4, criteria.getEmail_id() + "%");
+			preparedStatement.setString(5, criteria.getUid());
+			preparedStatement.setString(6, criteria.getUid());
+			
+
+			final ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				final Identity identity = new Identity();
-				identity.setUid(resultSet.getString(1));
-				identity.setDisplay_name(resultSet.getString(2));
-				identity.setEmail_id(resultSet.getString(3));
+				
+				identity.setDisplay_name(resultSet.getString(1));
+				identity.setEmail_id(resultSet.getString(2));
+				identity.setUid(resultSet.getString(3));
 				identities.add(identity);
 			}
 		} catch (SQLException e) {
@@ -170,18 +161,12 @@ while (rs.next()) {
 					connection.close();
 				}
 			} catch (final SQLException e) {
-				
+
 			}
 		}
 
 		return identities;
 
-		
-		
-		
 	}
 
-	
-	}
-	
-
+}

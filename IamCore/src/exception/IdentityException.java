@@ -1,6 +1,6 @@
 package exception;
 
-import fr.epita.iam.datamodel.Identity;
+import datamodel.Identity;
 
 public class IdentityException extends Exception {
 	
