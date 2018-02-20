@@ -28,16 +28,7 @@ public class IdentityJDBC implements IdentityDAO {
 			preparedstatement.setString(4, identity.getPassword());
 			preparedstatement.executeUpdate();
 
-			Statement st = conn.createStatement();
-			final ResultSet rs = st.executeQuery("SELECT * FROM IDENTITIES");
-			while (rs.next()) {
-
-				System.out.println(rs.getString("UID"));
-				System.out.println(rs.getString("DISPLAY_NAME"));
-				System.out.println(rs.getString("EMAIL_ID"));
-				System.out.println(rs.getString("PASSWORD"));
-
-			}
+			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {

@@ -12,30 +12,15 @@ public class Main {
 	static Scanner userInput = new Scanner(System.in);
 	IdentityJDBC identitydaoc = new IdentityJDBC();
 	public static void main(String[] args) throws SQLException {
-
-		do {
-
-			LoginDAO aut = new LoginDAO();
-			Identity identity = new Identity();
-					Scanner sc = new Scanner(System.in);
-			System.out.println("Login:");
-			System.out.println("Enter Your Uid");
-			String uid = sc.next();
-			System.out.println("Enter Password");
-			String password = sc.next();
-
-			if (aut.Authentication(uid, password)) {
-				identity.setUid(uid);
-				DisplayMenu(identity);
-			}
-
-			else {
-				createAcc();
-
-			}
-		} while (true);
-
+		
+	
+		
+		DisplayLoginOrSignUp();
+		
+		
 	}
+
+	
 
 	public static void DisplayMenu(Identity identity) throws SQLException {
 
@@ -52,7 +37,7 @@ public class Main {
 			System.out.println("|        1. Update your details           |");
 			System.out.println("|        2. Delete your account           |");
 			System.out.println("|        3. Search friend users           |");
-			System.out.println("|        4. Log out                       |");
+			System.out.println("|        4. Exit the program              |");
 			System.out.println("*****************************************");
 
 			System.out.print("Select option: ");
@@ -80,6 +65,7 @@ public class Main {
 				IdentityJDBC identitydaod = new IdentityJDBC();
 				identitydaod.delete(identity);
 				deleted = true;
+				DisplayLoginOrSignUp();
 				break;
 			case "3":
 				// Display the options to update
@@ -93,9 +79,11 @@ public class Main {
 				
 				
 				System.out.println(identitydaou.search(IdentitySearch));
-				// iterate on the list and display the shit you want
+				break;
+				
 			case "4":
-				System.exit(0);
+				System.out.println("You have logged out.. Have a nice day!");
+				DisplayLoginOrSignUp();
 
 				break;
 			default:
@@ -129,5 +117,54 @@ public class Main {
 		
 		
 	
+	public static void DisplayLoginOrSignUp()
+	{
+		System.out.println("1.Login to your account");
+		System.out.println("2.Sign Up");
+		int LogOrSignUp;
+		LogOrSignUp= userInput.nextInt();
+		switch(LogOrSignUp)
+	   {
+	case 1:
+	Login();
+	case 2:
+		createAcc();
+		DisplayLoginOrSignUp();
+	
+	   }
+	}
+public static void Login(){
+		
+		do {
+
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Login:");
+			System.out.println("Enter Your Uid");
+			String uid = sc.next();
+			System.out.println("Enter Password");
+			String password = sc.next();
+
+			LoginDAO aut = new LoginDAO();
+			Identity identity = new Identity();
+
+			if (aut.Authentication(uid, password)) {
+				identity.setUid(uid);
+				try {
+					DisplayMenu(identity);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			else {
+				DisplayLoginOrSignUp();
+				
+
+			}
+		} while (true);
+
+	}
+
 	
 }

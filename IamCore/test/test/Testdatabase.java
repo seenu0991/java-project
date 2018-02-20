@@ -130,7 +130,7 @@ while (rs.next()) {
 				System.out.println(rs.getString(4));
 			}
 	
-	System.out.println("successfully update");
+	System.out.println("successfully updated");
 	
 }catch (SQLException e) {
 	e.printStackTrace();
