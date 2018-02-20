@@ -27,10 +27,11 @@ public class IdentityJDBC implements IdentityDAO {
 			preparedstatement.setString(3, identity.getEmail_id());
 			preparedstatement.setString(4, identity.getPassword());
 			preparedstatement.executeUpdate();
+			System.out.println("Account creation successful");
 
 			
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			System.out.println("The userName already exists. Try again!");
 		} finally {
 			try {
 				if (conn != null) {

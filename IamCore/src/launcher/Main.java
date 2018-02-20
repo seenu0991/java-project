@@ -22,6 +22,11 @@ public class Main {
 
 	
 
+	/**
+	 * Displays the user profile once he is successfully logged in and the actions he can perform
+	 * @param identity
+	 * @throws SQLException
+	 */
 	public static void DisplayMenu(Identity identity) throws SQLException {
 
 		String READ_MENU;
@@ -97,26 +102,51 @@ public class Main {
 
 	}
 
+	/**
+	 * Displays the user menu for creating a new account and passes the values to IdentityJdbc
+	 */
 	public static void createAcc()
 	{
 		System.out.println("Create an account:");
 		Identity identity1 = new Identity();
-		System.out.println("Enter your User Id:");
+		System.out.println("Enter your User Id:(eg:1234)");
 		identity1.setUid(userInput.next());
 		System.out.println("Enter your User Display Name:");
 		identity1.setDisplay_name(userInput.next());
 		System.out.println("Enter your Email Id:");
 		identity1.setEmail_id(userInput.next());
+		String p1,p2;
+		
+		boolean PassMatchCheck=true;
+		do{
+			
 		System.out.println("Enter your Password:");
-		identity1.setPassword(userInput.next());
+		p1=userInput.next();
+		System.out.println("Enter your Password again:");
+		p2=userInput.next();
+		if(p1.equals(p2))
+		{
+			identity1.setPassword(p1);
+			PassMatchCheck=false;
+		}	
+		else
+		{
+			System.out.println("The Passwords dont match! ReEnter!");
+		}
+			
+		}while(PassMatchCheck);
 
 		// Dbconnection.getconnection();
 		IdentityJDBC identitydaoc = new IdentityJDBC();
 		identitydaoc.create(identity1);
+		
 		}	
 		
 		
 	
+	/**
+	 * Displays the option for the user whether to login or signup
+	 */
 	public static void DisplayLoginOrSignUp()
 	{
 		System.out.println("1.Login to your account");
@@ -133,6 +163,9 @@ public class Main {
 	
 	   }
 	}
+/**
+ * Displays the login prompt for the user and performs authentication check
+ */
 public static void Login(){
 		
 		do {
