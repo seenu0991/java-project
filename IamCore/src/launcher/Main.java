@@ -1,9 +1,14 @@
 package launcher;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Scanner;
 
 import datamodel.Identity;
+import exception.DaoCreateException;
+import logger.LogConfig;
+import logger.Logger;
 import services.IdentityJDBC;
 import services.LoginDAO;
 
@@ -11,9 +16,17 @@ public class Main {
 
 	static Scanner userInput = new Scanner(System.in);
 	IdentityJDBC identitydaoc = new IdentityJDBC();
-	public static void main(String[] args) throws SQLException {
+	
+	public static final Logger logger = new Logger (Main.class);	
+	
+	public static void main(String[] args) throws SQLException, FileNotFoundException {
+		
 		
 	
+		
+		
+		Date date = new Date(); 
+		System.out.println(date);
 		
 		DisplayLoginOrSignUp();
 		
@@ -42,7 +55,8 @@ public class Main {
 			System.out.println("|        1. Update your details           |");
 			System.out.println("|        2. Delete your account           |");
 			System.out.println("|        3. Search friend users           |");
-			System.out.println("|        4. Exit the program              |");
+			System.out.println("|        4. Log out                       |");
+			System.out.println("|        5. Exit                          |");
 			System.out.println("*****************************************");
 
 			System.out.print("Select option: ");
@@ -91,6 +105,9 @@ public class Main {
 				DisplayLoginOrSignUp();
 
 				break;
+				
+			case "5":
+				System.exit(0);
 			default:
 				System.out.println("Invalid selection");
 				break;
@@ -128,6 +145,9 @@ public class Main {
 		{
 			identity1.setPassword(p1);
 			PassMatchCheck=false;
+			System.out.println("Account creation successful");
+			
+			logger.info("User created :");
 		}	
 		else
 		{
@@ -138,7 +158,12 @@ public class Main {
 
 		// Dbconnection.getconnection();
 		IdentityJDBC identitydaoc = new IdentityJDBC();
-		identitydaoc.create(identity1);
+		try {
+			identitydaoc.create(identity1);
+		} catch (DaoCreateException e) {
+			// TODO Auto-generated catch block
+			System.out.println("UserID already exists. Try Again with another UserID "+e.getMessage());
+		}
 		
 		}	
 		

@@ -3,7 +3,6 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/iam-core-ref"/>
-	<classpathentry kind="lib" path="lib/derbyclient.jar"/>
+	<classpathentry kind="lib" path="D:/Softwares/db-derby-10.14.1.0-bin/lib/derbyclient.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

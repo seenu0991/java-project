@@ -1,8 +1,6 @@
 package services;
 
 import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import datamodel.Identity;
-import exception.IdentityException;
+import exception.*;
+
 
 public class IdentityJDBC implements IdentityDAO {
 
 	@Override
-	public void create(Identity identity) {
+	public void create(Identity identity) throws DaoCreateException{
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		try {
@@ -31,7 +30,12 @@ public class IdentityJDBC implements IdentityDAO {
 
 			
 		} catch (SQLException e) {
-			System.out.println("The userName already exists. Try again!");
+		
+			DaoCreateException exception = new DaoCreateException();
+			exception.initCause(e);
+			exception.setFaultObject(identity);
+			throw exception;
+			
 		} finally {
 			try {
 				if (conn != null) {
