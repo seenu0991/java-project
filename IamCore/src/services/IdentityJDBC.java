@@ -58,18 +58,46 @@ public class IdentityJDBC implements IdentityDAO {
 
 		try {
 			conn = Dbconnection.getconnection();
-			//String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
-			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
+			
+	        
+	        
+	        
+			
+			if(identity.getDisplay_name()!=null)
+			{	
+			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=? WHERE UID=?";
 			final PreparedStatement preparedstatement = conn.prepareStatement(query);
 			preparedstatement.setString(1, identity.getDisplay_name());
-			preparedstatement.setString(2, identity.getEmail_id());
 			preparedstatement.setString(3, identity.getUid());
-
-			final int noOfRowsUpdated = preparedstatement.executeUpdate();
+final int noOfRowsUpdated = preparedstatement.executeUpdate();
 			
 			if(noOfRowsUpdated>0) {
 				System.out.println("Updated");
 			}
+			
+			}
+//			
+			if(identity.getEmail_id()!=null)
+			{
+				String query = "UPDATE IDENTITIES SET EMAIL_ID=? WHERE UID=?";
+				final PreparedStatement preparedstatement = conn.prepareStatement(query);
+				preparedstatement.setString(1, identity.getEmail_id());
+				preparedstatement.setString(3, identity.getUid());
+				
+				final int noOfRowsUpdated = preparedstatement.executeUpdate();
+				
+				if(noOfRowsUpdated>0) {
+					System.out.println("Updated");
+				}
+				
+			}
+			//String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
+			//final PreparedStatement preparedstatement = conn.prepareStatement(query);
+//			preparedstatement.setString(1, identity.getDisplay_name());
+//			preparedstatement.setString(2, identity.getEmail_id());
+//			preparedstatement.setString(3, identity.getUid());
+
+			
 			
 		} catch (SQLException e) {
 			DaoUpdateException exception = new DaoUpdateException();

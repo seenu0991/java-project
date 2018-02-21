@@ -33,8 +33,9 @@ public class Main {
 
 	
 
-	/**
+	/**<p>
 	 * Displays the user profile once he is successfully logged in and the actions he can perform
+	 * </p>
 	 * @param identity
 	 * @throws SQLException
 	 */
@@ -43,11 +44,17 @@ public class Main {
 		String READ_MENU;
 		IdentityJDBC identitydaou = new IdentityJDBC();
 		boolean deleted = false;
+		
+		
+		
+		
+		
 
 		while (true) {
 			// Display menu graphics
+			System.out.println("User id: "+identity.getUid());
 			System.out.println("*****************************************");
-			System.out.println("|   WELCOME TO YOUR PROFILE               |");
+			System.out.println("|   WELCOME TO YOUR PROFILE                |");
 			System.out.println("*****************************************");
 			System.out.println("| Edit your profile:                      |");
 			System.out.println("|        1. Update your details           |");
@@ -73,7 +80,7 @@ public class Main {
 				
 				String dispName;
 				dispName = userInput.next();
-				if(dispName.equals("1"))
+				if(dispName.equals("0"))
 					System.out.println("Display name not updated!");
 				else
 				identity.setDisplay_name(dispName);
@@ -82,7 +89,7 @@ public class Main {
 				
 				System.out.println("Enter the email id: (If you dont want to update, press 0) ");
 				String emailId = userInput.next();
-				if(emailId.equals("1"))
+				if(emailId.equals("0"))
 					System.out.println("Email Id not updated!");
 				else
 				identity.setEmail_id(emailId);
@@ -144,7 +151,9 @@ public class Main {
 	}
 
 	/**
+	 * <p>
 	 * Displays the user menu for creating a new account and passes the values to IdentityJdbc
+	 * </p>
 	 */
 	public static void createAcc()
 	{
@@ -195,10 +204,13 @@ public class Main {
 		
 	
 	/**
+	 * <p>
 	 * Displays the option for the user whether to login or signup
+	 * </p>
 	 */
 	public static void DisplayLoginOrSignUp()
 	{
+		System.out.println("Bienvenue");
 		System.out.println("1.Login to your account");
 		System.out.println("2.Sign Up");
 		System.out.println("3.Exit");
@@ -217,7 +229,9 @@ public class Main {
 	   }
 	}
 /**
+ * <p>
  * Displays the login prompt for the user and performs authentication check
+ * </p>
  */
 	
 public static void Login(){
@@ -237,6 +251,7 @@ public static void Login(){
 			if (aut.Authentication(uid, password)) {
 				
 				identity.setUid(uid);
+				
 				
 				try {
 					

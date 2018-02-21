@@ -22,6 +22,11 @@ public class Dbconnection {
 	}
 
 	
+	/**
+	 * Connection method is used to make a connection with the database by taking the values from the properties file
+	 * 
+	 * @return conn
+	 */
 	public static Connection getconnection() {
 		
 		final String ConnectionString = properties.getProperty("URL");
@@ -46,6 +51,11 @@ public class Dbconnection {
 
 	}
 
+	/**
+	 * This is used to Initialize the properties file
+	 * 
+	 * @return properties
+	 */
 	private static Properties intializeProperties() {
 		
 		properties=new Properties();
