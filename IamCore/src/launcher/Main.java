@@ -52,9 +52,9 @@ public class Main {
 
 		while (true) {
 			// Display menu graphics
-			System.out.println("User id: "+identity.getUid());
+			
 			System.out.println("*****************************************");
-			System.out.println("|   WELCOME TO YOUR PROFILE                |");
+			System.out.println("|   WELCOME TO YOUR PROFILE Id="+identity.getUid()+"       |");
 			System.out.println("*****************************************");
 			System.out.println("| Edit your profile:                      |");
 			System.out.println("|        1. Update your details           |");
@@ -74,12 +74,13 @@ public class Main {
 
 			case "1":
 
-				System.out.println(identitydaou.search(identity));
+				
 
 				System.out.println("Enter the display name: (If you dont want to update, press 0)");
 				
 				String dispName;
-				dispName = userInput.next();
+				userInput.nextLine();
+				dispName = userInput.nextLine();
 				if(dispName.equals("0"))
 					System.out.println("Display name not updated!");
 				else
@@ -88,7 +89,8 @@ public class Main {
 				
 				
 				System.out.println("Enter the email id: (If you dont want to update, press 0) ");
-				String emailId = userInput.next();
+				
+				String emailId = userInput.nextLine();
 				if(emailId.equals("0"))
 					System.out.println("Email Id not updated!");
 				else
@@ -122,8 +124,9 @@ public class Main {
 				Identity IdentitySearch = new Identity();
 				
 				System.out.println("Search a user who is also using this app:");
-				System.out.println("Enter display name :");
-				String displayName=userInput.next();;
+				System.out.println("Enter display name or part of the name :");
+				userInput.nextLine();
+				String displayName=userInput.nextLine();;
 				IdentitySearch.setDisplay_name(displayName);
 				
 				
@@ -151,29 +154,32 @@ public class Main {
 	}
 
 	/**
-	 * <p>
 	 * Displays the user menu for creating a new account and passes the values to IdentityJdbc
-	 * </p>
 	 */
 	public static void createAcc()
 	{
 		System.out.println("Create an account:");
 		Identity identity1 = new Identity();
 		System.out.println("Enter your User Id:(eg:1234)");
-		identity1.setUid(userInput.next());
+		userInput.nextLine();
+		identity1.setUid(userInput.nextLine());
 		System.out.println("Enter your User Display Name:");
-		identity1.setDisplay_name(userInput.next());
+		
+		identity1.setDisplay_name(userInput.nextLine());
+		
 		System.out.println("Enter your Email Id:");
-		identity1.setEmail_id(userInput.next());
+		identity1.setEmail_id(userInput.nextLine());
 		String p1,p2;
 		
 		boolean PassMatchCheck=true;
 		do{
 			
 		System.out.println("Enter your Password:");
-		p1=userInput.next();
+		
+		p1=userInput.nextLine();
 		System.out.println("Enter your Password again:");
-		p2=userInput.next();
+	
+		p2=userInput.nextLine();
 		if(p1.equals(p2))
 		{
 			identity1.setPassword(p1);
@@ -204,9 +210,8 @@ public class Main {
 		
 	
 	/**
-	 * <p>
+	 * 
 	 * Displays the option for the user whether to login or signup
-	 * </p>
 	 */
 	public static void DisplayLoginOrSignUp()
 	{
@@ -241,9 +246,10 @@ public static void Login(){
 			
 			System.out.println("Login:");
 			System.out.println("Enter Your Uid");
-			String uid = userInput.next();
+			userInput.nextLine();
+			String uid = userInput.nextLine();
 			System.out.println("Enter Password");
-			String password = userInput.next();
+			String password = userInput.nextLine();
 			
 			LoginDAO aut = new LoginDAO();
 			Identity identity = new Identity();

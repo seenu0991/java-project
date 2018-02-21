@@ -15,6 +15,12 @@ import logger.Logger;
 public class IdentityJDBC implements IdentityDAO {
 
 	private static final Logger logger = new Logger(IdentityJDBC.class);
+	/* (Javadoc)
+	 * @see services.IdentityDAO#create(datamodel.Identity)
+	 * <p>
+	 * This method is used to create an user by creating the identity
+	 * </p>
+	 */
 	@Override
 	public void create(Identity identity) throws DaoCreateException{
 		// TODO Auto-generated method stub
@@ -52,6 +58,12 @@ public class IdentityJDBC implements IdentityDAO {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see services.IdentityDAO#update(datamodel.Identity)
+	 * <p>
+	 * This is used to update an account which already exists
+	 * </p>
+	 */
 	@Override
 	public void update(Identity identity) throws DaoUpdateException {
 		Connection conn = null;
@@ -68,12 +80,10 @@ public class IdentityJDBC implements IdentityDAO {
 			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=? WHERE UID=?";
 			final PreparedStatement preparedstatement = conn.prepareStatement(query);
 			preparedstatement.setString(1, identity.getDisplay_name());
-			preparedstatement.setString(3, identity.getUid());
-final int noOfRowsUpdated = preparedstatement.executeUpdate();
+			preparedstatement.setString(2, identity.getUid());
+			preparedstatement.executeUpdate();
 			
-			if(noOfRowsUpdated>0) {
-				System.out.println("Updated");
-			}
+			
 			
 			}
 //			
@@ -82,20 +92,12 @@ final int noOfRowsUpdated = preparedstatement.executeUpdate();
 				String query = "UPDATE IDENTITIES SET EMAIL_ID=? WHERE UID=?";
 				final PreparedStatement preparedstatement = conn.prepareStatement(query);
 				preparedstatement.setString(1, identity.getEmail_id());
-				preparedstatement.setString(3, identity.getUid());
+				preparedstatement.setString(2, identity.getUid());
 				
-				final int noOfRowsUpdated = preparedstatement.executeUpdate();
-				
-				if(noOfRowsUpdated>0) {
-					System.out.println("Updated");
-				}
+			
 				
 			}
-			//String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
-			//final PreparedStatement preparedstatement = conn.prepareStatement(query);
-//			preparedstatement.setString(1, identity.getDisplay_name());
-//			preparedstatement.setString(2, identity.getEmail_id());
-//			preparedstatement.setString(3, identity.getUid());
+			
 
 			
 			
@@ -119,6 +121,9 @@ final int noOfRowsUpdated = preparedstatement.executeUpdate();
 
 	}
 
+	/* (non-Javadoc)
+	 * @see services.IdentityDAO#delete(datamodel.Identity)
+	 */
 	@Override
 	public void delete(Identity identity) throws DaoDeleteException {
 		// TODO Auto-generated method stub
@@ -180,7 +185,6 @@ final int noOfRowsUpdated = preparedstatement.executeUpdate();
 			final ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				final Identity identity = new Identity();
-				
 				identity.setDisplay_name(resultSet.getString(1));
 				identity.setEmail_id(resultSet.getString(2));
 				identity.setUid(resultSet.getString(3));
