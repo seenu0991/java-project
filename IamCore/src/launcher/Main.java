@@ -2,12 +2,12 @@ package launcher;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.Scanner;
 
 import datamodel.Identity;
 import exception.DaoCreateException;
-import logger.LogConfig;
+import exception.DaoDeleteException;
+import exception.DaoUpdateException;
 import logger.Logger;
 import services.IdentityJDBC;
 import services.LoginDAO;
@@ -17,16 +17,14 @@ public class Main {
 	static Scanner userInput = new Scanner(System.in);
 	IdentityJDBC identitydaoc = new IdentityJDBC();
 	
-	public static final Logger logger = new Logger (Main.class);	
+	private static final Logger logger = new Logger(Main.class);
+
+	
+	
+	
 	
 	public static void main(String[] args) throws SQLException, FileNotFoundException {
 		
-		
-	
-		
-		
-		Date date = new Date(); 
-		System.out.println(date);
 		
 		DisplayLoginOrSignUp();
 		
@@ -71,18 +69,44 @@ public class Main {
 
 				System.out.println(identitydaou.search(identity));
 
-				System.out.println("Enter the display name: ");
-				identity.setDisplay_name(userInput.next());
-				System.out.println("Enter the email id: ");
-				identity.setEmail_id(userInput.next());
-
-				identitydaou.update(identity);
+				System.out.println("Enter the display name: (If you dont want to update, press 0)");
+				
+				String dispName;
+				dispName = userInput.next();
+				if(dispName.equals("1"))
+					System.out.println("Display name not updated!");
+				else
+				identity.setDisplay_name(dispName);
+				
+				
+				
+				System.out.println("Enter the email id: (If you dont want to update, press 0) ");
+				String emailId = userInput.next();
+				if(emailId.equals("1"))
+					System.out.println("Email Id not updated!");
+				else
+				identity.setEmail_id(emailId);
+				
+				try{
+					identitydaou.update(identity);
+				}
+				catch(DaoUpdateException e){
+					logger.info("Update Unsuccessful"+e.getMessage());
+				}
 
 				break;
 			case "2":
 
 				IdentityJDBC identitydaod = new IdentityJDBC();
+				try {
 				identitydaod.delete(identity);
+				
+				}
+				catch(DaoDeleteException e)
+				{
+					logger.info("Delete Unsuccessful"+e.getMessage());
+
+				}
 				deleted = true;
 				DisplayLoginOrSignUp();
 				break;
@@ -145,7 +169,8 @@ public class Main {
 		{
 			identity1.setPassword(p1);
 			PassMatchCheck=false;
-			System.out.println("Account creation successful");
+			
+			 
 			
 			logger.info("User created :");
 		}	
@@ -176,6 +201,7 @@ public class Main {
 	{
 		System.out.println("1.Login to your account");
 		System.out.println("2.Sign Up");
+		System.out.println("3.Exit");
 		int LogOrSignUp;
 		LogOrSignUp= userInput.nextInt();
 		switch(LogOrSignUp)
@@ -185,29 +211,37 @@ public class Main {
 	case 2:
 		createAcc();
 		DisplayLoginOrSignUp();
+	case 3:
+		System.exit(0);
 	
 	   }
 	}
 /**
  * Displays the login prompt for the user and performs authentication check
  */
+	
 public static void Login(){
 		
 		do {
 
-			Scanner sc = new Scanner(System.in);
+			
 			System.out.println("Login:");
 			System.out.println("Enter Your Uid");
-			String uid = sc.next();
+			String uid = userInput.next();
 			System.out.println("Enter Password");
-			String password = sc.next();
-
+			String password = userInput.next();
+			
 			LoginDAO aut = new LoginDAO();
 			Identity identity = new Identity();
 
 			if (aut.Authentication(uid, password)) {
+				
 				identity.setUid(uid);
+				
 				try {
+					
+					logger.info("User:"+uid+" logged in");
+					System.out.println("Login successful");
 					DisplayMenu(identity);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -216,13 +250,17 @@ public static void Login(){
 			}
 
 			else {
+				logger.error("Login failed");
 				DisplayLoginOrSignUp();
 				
 
 			}
 		} while (true);
+		
+	
 
 	}
-
 	
+
+
 }

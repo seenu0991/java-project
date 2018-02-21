@@ -9,10 +9,12 @@ import java.util.List;
 
 import datamodel.Identity;
 import exception.*;
+import logger.Logger;
 
 
 public class IdentityJDBC implements IdentityDAO {
 
+	private static final Logger logger = new Logger(IdentityJDBC.class);
 	@Override
 	public void create(Identity identity) throws DaoCreateException{
 		// TODO Auto-generated method stub
@@ -26,7 +28,7 @@ public class IdentityJDBC implements IdentityDAO {
 			preparedstatement.setString(3, identity.getEmail_id());
 			preparedstatement.setString(4, identity.getPassword());
 			preparedstatement.executeUpdate();
-			System.out.println("Account creation successful");
+			logger.info("User"+ identity.getUid()+"Created");
 
 			
 		} catch (SQLException e) {
@@ -42,7 +44,7 @@ public class IdentityJDBC implements IdentityDAO {
 					conn.close();
 				}
 			} catch (final SQLException e) {
-				System.out.println(e.getMessage());
+				logger.error(e.getMessage());
 				e.printStackTrace();
 
 			}
@@ -51,13 +53,13 @@ public class IdentityJDBC implements IdentityDAO {
 	}
 
 	@Override
-	public void update(Identity identity) {
+	public void update(Identity identity) throws DaoUpdateException {
 		Connection conn = null;
 
 		try {
 			conn = Dbconnection.getconnection();
+			//String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
 			String query = "UPDATE IDENTITIES SET DISPLAY_NAME=?,EMAIL_ID=? WHERE UID=?";
-
 			final PreparedStatement preparedstatement = conn.prepareStatement(query);
 			preparedstatement.setString(1, identity.getDisplay_name());
 			preparedstatement.setString(2, identity.getEmail_id());
@@ -70,7 +72,10 @@ public class IdentityJDBC implements IdentityDAO {
 			}
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			DaoUpdateException exception = new DaoUpdateException();
+			exception.initCause(e);
+			exception.setUpdateFailed(identity);
+			throw exception;
 		} finally {
 			try {
 				if (conn != null) {
@@ -78,7 +83,7 @@ public class IdentityJDBC implements IdentityDAO {
 				}
 				
 			} catch (final SQLException e) {
-				System.out.println(e.getMessage());
+				logger.info(e.getMessage());
 				e.printStackTrace();
 
 			}
@@ -87,7 +92,7 @@ public class IdentityJDBC implements IdentityDAO {
 	}
 
 	@Override
-	public void delete(Identity identity) {
+	public void delete(Identity identity) throws DaoDeleteException {
 		// TODO Auto-generated method stub
 
 		Connection conn = null;
@@ -98,18 +103,21 @@ public class IdentityJDBC implements IdentityDAO {
 			final PreparedStatement preparedstatement = conn.prepareStatement(query);
 			preparedstatement.setString(1, identity.getUid());
 
-			int no=preparedstatement.executeUpdate();
+			preparedstatement.executeUpdate();
 			System.out.println("deleted");
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			DaoDeleteException exception = new DaoDeleteException();
+			exception.initCause(e);
+			exception.setUpdateFailed(identity);
+			throw exception;
 		} finally {
 			try {
 				if (conn != null) {
 					conn.close();
 				}
 			} catch (final SQLException e) {
-				System.out.println(e.getMessage());
+				logger.error(e.getMessage());
 				e.printStackTrace();
 
 			}

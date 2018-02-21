@@ -61,7 +61,7 @@ public class Dbconnection {
 		if (inputStream != null) {
 			try {
 				properties.load(inputStream);
-				System.out.println("prop loaded successfully");
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

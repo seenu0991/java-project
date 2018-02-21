@@ -25,7 +25,7 @@ public class Identity {
 	private String uid;
 	@Override
 	public String toString() {
-		return "Identity [display_name=" + display_name + ", email_id=" + email_id + ", uid=" + uid + "]";
+		return "display_name=" + display_name + " \nEmail_id=" + email_id + "\nUser Id=" + uid + "";
 	}
 	private String display_name;
 	private String email_id;

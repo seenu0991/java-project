@@ -3,12 +3,13 @@ package services;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Scanner;
 
-import datamodel.Identity;
+import logger.Logger;
+
 
 public class LoginDAO {
 
+	private static final Logger logger = new Logger(LoginDAO.class);
 	// TODO Auto-generated method stub
 
 	/**
@@ -19,6 +20,7 @@ public class LoginDAO {
 	 */
 	public boolean Authentication(String uid, String password) {
 		// TODO Auto-generated method stub
+		
 
 		boolean res = false;
 		try {
@@ -32,14 +34,14 @@ public class LoginDAO {
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 
-				System.out.println("User authenticated successfully");
+			
 				res = true;
 
 			} else {
 				System.out.println("Invalid username or password!");
 			}
 		} catch (Exception e) {
-			System.out.println("DB related Error");
+			logger.error("DB related Error");
 			e.printStackTrace();
 		}
 		return res;
