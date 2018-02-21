@@ -7,9 +7,6 @@ import exception.DaoCreateException;
 import exception.DaoDeleteException;
 import exception.DaoUpdateException;
 
-
-
-
 public interface IdentityDAO {
 
 	public void create(Identity identity) throws DaoCreateException;
@@ -20,7 +17,4 @@ public interface IdentityDAO {
 
 	public List<Identity> search(Identity criteria);
 
-
-
-	
 }
