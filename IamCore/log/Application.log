@@ -1,0 +1,140 @@
+2018-02-21_14:13:20.794 - INFO - launcher.Main User:789 logged in
+2018-02-21_14:16:33.375 - INFO - launcher.Main User:789 logged in
+2018-02-21_14:34:44.415 - INFO - launcher.Main User created :
+2018-02-21_14:34:45.155 - INFO - services.IdentityJDBC User1234567Created
+2018-02-21_14:36:42.024 - INFO - launcher.Main User:789 logged in
+2018-02-21_14:40:47.983 - INFO - launcher.Main User:789 logged in
+2018-02-21_15:02:59.157 - ERROR - launcher.Main Login failed
+2018-02-21_15:12:13.046 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:13:55.185 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:22:42.170 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:24:40.822 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:33:19.977 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:35:59.701 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:38:41.768 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:39:50.286 - INFO - launcher.Main User:12341234 logged in
+2018-02-21_15:55:56.554 - INFO - launcher.Main User:1234567 logged in
+2018-02-21_15:57:15.518 - INFO - launcher.Main User:987 logged in
+2018-02-21_15:58:50.331 - INFO - launcher.Main User:987 logged in
+2018-02-21_15:59:15.888 - INFO - launcher.Main User:987 logged in
+2018-02-21_16:01:07.474 - INFO - launcher.Main User:987 logged in
+2018-02-21_16:01:55.992 - INFO - launcher.Main User:987 logged in
+2018-02-21_16:25:39.333 - INFO - launcher.Main User:1212 logged in
+2018-02-21_16:28:49.348 - ERROR - launcher.Main Login failed
+2018-02-21_16:28:58.193 - ERROR - launcher.Main Login failed
+2018-02-21_16:29:03.847 - INFO - launcher.Main User:1212 logged in
+2018-02-21_16:49:25.103 - INFO - launcher.Main User created :
+2018-02-21_16:49:51.848 - INFO - launcher.Main User:1212 logged in
+2018-02-21_16:56:08.087 - INFO - launcher.Main User:987 logged in
+2018-02-21_16:58:01.312 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=1 
+Email_id=1
+User Id=987
+2018-02-21_16:59:38.411 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=1 
+Email_id=1
+User Id=987
+2018-02-21_16:59:52.187 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=ab 
+Email_id=cd@gmail.com
+User Id=987
+2018-02-21_17:01:10.380 - INFO - launcher.Main User:987 logged in
+2018-02-21_17:01:29.669 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=Ab 
+Email_id=cd@gmail.com
+User Id=987
+2018-02-21_17:05:20.383 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:05:31.754 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=Ab 
+Email_id=Cd
+User Id=1212
+2018-02-21_17:06:12.944 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:30:41.449 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:33:47.405 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:34:17.862 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:35:26.174 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:42:40.116 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:43:35.127 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:45:12.214 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:45:48.751 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:47:06.953 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:48:28.204 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=Biology 
+Email_id=bio@bio.com
+User Id=1212
+2018-02-21_17:51:10.774 - INFO - launcher.Main User:1212 logged in
+2018-02-21_17:51:34.917 - INFO - launcher.Main Update UnsuccessfulProblem while updating your account using this details:display_name=BIOLOGY 
+Email_id=bio@b.com
+User Id=1212
+2018-02-21_17:55:03.848 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:09:12.934 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:14:42.621 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:21:00.815 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:23:55.386 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:24:10.278 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:24:43.451 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:31:44.822 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:35:22.215 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:38:14.578 - INFO - launcher.Main User:1212 logged in
+2018-02-21_19:39:29.539 - ERROR - launcher.Main Login failed
+2018-02-21_19:39:55.104 - ERROR - launcher.Main Login failed
+2018-02-21_19:39:59.852 - ERROR - launcher.Main Login failed
+2018-02-21_19:40:09.742 - INFO - launcher.Main User:1212 logged in
+2018-02-21_23:34:04.620 - ERROR - launcher.Main Login failed
+2018-02-21_23:34:46.316 - INFO - launcher.Main User created :
+2018-02-21_23:34:46.504 - INFO - services.IdentityJDBC User987Created
+2018-02-21_23:35:03.080 - INFO - launcher.Main User:987 logged in
+2018-02-21_23:35:23.248 - INFO - launcher.Main User:987 logged in
+2018-02-21_23:36:38.484 - INFO - launcher.Main User created :
+2018-02-21_23:37:31.660 - INFO - launcher.Main User created :
+2018-02-21_23:37:31.846 - INFO - services.IdentityJDBC User5678Created
+2018-02-21_23:39:04.758 - INFO - launcher.Main User created :
+2018-02-21_23:39:05.490 - INFO - services.IdentityJDBC User7890Created
+2018-02-21_23:39:27.137 - INFO - launcher.Main User:7890 logged in
+2018-02-21_23:44:22.535 - ERROR - launcher.Main Login failed
+2018-02-21_23:44:30.259 - ERROR - launcher.Main Login failed
+2018-02-21_23:44:38.916 - ERROR - launcher.Main Login failed
+2018-02-21_23:45:20.523 - ERROR - launcher.Main Login failed
+2018-02-21_23:46:14.366 - ERROR - launcher.Main Login failed
+2018-02-21_23:51:56.323 - INFO - launcher.Main User:7890 logged in
+2018-02-21_23:54:41.605 - INFO - launcher.Main User:7890 logged in
+2018-02-21_23:55:25.593 - INFO - launcher.Main User:7890 logged in
+2018-02-21_23:56:13.670 - INFO - launcher.Main User:7890 logged in
+2018-02-21_23:57:01.898 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:02:02.561 - ERROR - launcher.Main Login failed
+2018-02-22_00:02:12.625 - ERROR - launcher.Main Login failed
+2018-02-22_00:02:21.341 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:08:08.650 - INFO - launcher.Main User created :
+2018-02-22_00:08:08.843 - INFO - services.IdentityJDBC User7899Created
+2018-02-22_00:08:56.513 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:10:28.562 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:11:45.202 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:12:06.357 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:12:38.508 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:12:57.344 - ERROR - launcher.Main Login failed
+2018-02-22_00:13:06.703 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:13:54.746 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:16:27.552 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:18:14.883 - INFO - launcher.Main User created :
+2018-02-22_00:18:15.064 - INFO - services.IdentityJDBC User7887Created
+2018-02-22_00:30:13.674 - ERROR - services.LoginDAO DB related Error
+2018-02-22_00:30:13.696 - ERROR - launcher.Main Login failed
+2018-02-22_00:35:06.663 - INFO - launcher.Main User created :
+2018-02-22_00:41:55.997 - ERROR - services.LoginDAO DB related Error
+2018-02-22_00:41:56.021 - ERROR - launcher.Main Login failed
+2018-02-22_00:42:29.671 - INFO - launcher.Main User:7890 logged in
+2018-02-22_00:44:55.749 - INFO - launcher.Main User created :
+2018-02-22_00:44:56.023 - INFO - services.IdentityJDBC User7676Created
+2018-02-22_00:46:34.133 - INFO - launcher.Main User:7676 logged in
+2018-02-22_00:50:03.832 - INFO - launcher.Main User:7676 logged in
+2018-02-22_13:44:10.803 - ERROR - launcher.Main Login failed
+2018-02-22_13:44:40.168 - ERROR - launcher.Main Login failed
+2018-02-22_13:44:48.484 - ERROR - launcher.Main Login failed
+2018-02-22_13:45:26.179 - ERROR - launcher.Main Login failed
+2018-02-22_13:45:32.155 - ERROR - launcher.Main Login failed
+2018-02-22_13:50:13.384 - INFO - launcher.Main User:1212 logged in
+2018-02-22_13:52:56.079 - INFO - launcher.Main User:1212 logged in
+2018-02-22_13:56:58.022 - INFO - launcher.Main User:1212 logged in
+2018-02-22_13:58:08.967 - ERROR - launcher.Main Login failed
+2018-02-22_17:21:55.715 - ERROR - launcher.Main Login failed
+2018-02-22_17:22:03.753 - ERROR - launcher.Main Login failed
+2018-02-22_17:22:10.320 - ERROR - launcher.Main Login failed
+2018-02-22_17:22:23.104 - ERROR - launcher.Main Login failed
+2018-02-22_17:37:58.932 - INFO - launcher.Main User created :
+2018-02-22_17:37:59.597 - INFO - services.IdentityJDBC User4343Created
+2018-02-22_17:38:11.732 - INFO - launcher.Main User:4343 logged in
+2018-02-22_17:41:29.089 - INFO - launcher.Main User:4343 logged in
