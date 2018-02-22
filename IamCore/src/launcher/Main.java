@@ -63,6 +63,7 @@ public class Main {
 			switch (READ_MENU) {
 
 			case "1":
+				System.out.println(identitydaou.search(identity));
 
 				System.out.println("Enter the display name: (If you dont want to update, press 0)");
 
@@ -142,10 +143,10 @@ public class Main {
 	public static void createAcc() {
 		System.out.println("Create an account:");
 		Identity identity1 = new Identity();
-		System.out.println("Enter your User Id:(eg:1234)");
+		System.out.println("Enter an User Id:(eg:1234)");
 		userInput.nextLine();
 		identity1.setUid(userInput.nextLine());
-		System.out.println("Enter your User Display Name:");
+		System.out.println("Enter your Display Name:");
 
 		identity1.setDisplay_name(userInput.nextLine());
 
@@ -185,8 +186,13 @@ public class Main {
 	}
 
 	/**
+	 *  * * 	 * <h3>Description</h3>
+	 * <p>
+	 * Displays the option for the user whether to login to his account or create a new account and become an user
+	 * </p>
+	 * This is done using a switch case in which the user can choose what to operation to perform
+	 *  and then he is redirected to the option desired
 	 * 
-	 * Displays the option for the user whether to login or signup
 	 */
 	public static void DisplayLoginOrSignUp() {
 		System.out.println("Bienvenue");
@@ -198,19 +204,26 @@ public class Main {
 		switch (LogOrSignUp) {
 		case 1:
 			Login();
+			break;
 		case 2:
 			createAcc();
 			DisplayLoginOrSignUp();
+			break;
 		case 3:
 			System.exit(0);
+	default:
+		System.out.println("Invalid choice");
+		DisplayLoginOrSignUp();
 
 		}
 	}
 
 	/**
+	 *  *  * * 	 * <h3>Description</h3>
 	 * <p>
 	 * Displays the login prompt for the user and performs authentication check
 	 * </p>
+	
 	 */
 
 	public static void Login() {

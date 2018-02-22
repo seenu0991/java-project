@@ -18,7 +18,18 @@ public class LoginDAO {
 	 * 
 	 * @param uid The uid
 	 * @param password The password
-	 * @return
+	 * @return res
+	 *  <h3>Description</h3>
+	 * <p>
+     *   This method is used to perform the authentication and then find out if the user has entered the correct credentials
+	 * </p>
+	 *
+	 * <h3>Usage</h3>
+	 * <p>
+	 * It should be used as follows :
+	 * This can be done by comparing the uid and passaord to the database and check if they are present and they match 
+	 * and the user is given access to his account
+	 * </p>
 	 */
 	public boolean Authentication(String uid, String password) {
 		// TODO Auto-generated method stub

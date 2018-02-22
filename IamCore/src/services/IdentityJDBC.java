@@ -15,11 +15,17 @@ import logger.Logger;
 public class IdentityJDBC implements IdentityDAO {
 
 	private static final Logger logger = new Logger(IdentityJDBC.class);
-	/* (Javadoc)
+	/* 
 	 * @see services.IdentityDAO#create(datamodel.Identity)
+	 *  * <h3>Description</h3>
 	 * <p>
-	 * This method is used to create an user by creating the identity
+     * This method is used to create an user by creating the identity
 	 * </p>
+	 *
+	 * <h3>Usage</h3>
+	 * <p>
+	 * It should be used as follows :
+	 * the values for the identity is set by getting the values from the user and set using preparestatement
 	 */
 	@Override
 	public void create(Identity identity) throws DaoCreateException{
@@ -58,10 +64,18 @@ public class IdentityJDBC implements IdentityDAO {
 
 	}
 
-	/* (non-Javadoc)
+	/* 
 	 * @see services.IdentityDAO#update(datamodel.Identity)
+	 *  * <h3>Description</h3>
 	 * <p>
-	 * This is used to update an account which already exists
+     *   This method is used to update an account which already exists
+	 * </p>
+	 *
+	 * <h3>Usage</h3>
+	 * <p>
+	 * It should be used as follows :
+	 * The update operation is done by getting the display name and the email id if the user wants to 
+	 * perform an operation
 	 * </p>
 	 */
 	@Override
@@ -121,8 +135,20 @@ public class IdentityJDBC implements IdentityDAO {
 
 	}
 
+	
 	/* (non-Javadoc)
 	 * @see services.IdentityDAO#delete(datamodel.Identity)
+	 * * <h3>Description</h3>
+	 * <p>
+     *   This method is used to delete an account 
+	 * </p>
+	 *
+	 * <h3>Usage</h3>
+	 * <p>
+	 * It should be used as follows :
+	 * This can be done by comparing the uid to the database and the corresponding identity can be deleted
+	 * </p>
+	 * 
 	 */
 	@Override
 	public void delete(Identity identity) throws DaoDeleteException {
@@ -158,6 +184,19 @@ public class IdentityJDBC implements IdentityDAO {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see services.IdentityDAO#search(datamodel.Identity)
+	 *  <h3>Description</h3>
+	 * <p>
+     *   This method is used to search a user who is also a user of our application 
+	 * </p>
+	 *
+	 * <h3>Usage</h3>
+	 * <p>
+	 * It should be used as follows :
+	 * By giving the full name or part of the name and then search it
+	 * </p> 
+	 */
 	@Override
 	public List<Identity> search(Identity criteria) {
 
