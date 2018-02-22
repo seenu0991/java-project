@@ -26,11 +26,13 @@ public class Main {
 	}
 
 	/**
+	 * 	 * <h3>Description</h3>
 	 * <p>
 	 * Displays the user profile once he is successfully logged in and the actions
 	 * he can perform
 	 * </p>
-	 * 
+	 * <h3>Usage</h3>
+	 * the display of the menu is done to allow the user to perform certain operations
 	 * @param identity
 	 * @throws SQLException
 	 */
@@ -137,8 +139,14 @@ public class Main {
 	}
 
 	/**
-	 * Displays the user menu for creating a new account and passes the values to
-	 * IdentityJdbc
+	
+	 * <h3>Description</h3>
+	 * <p>
+ * Displays the user menu for creating a new account and passes the values to IdentityJdbc	 
+ * </p>
+ *  *  <h3>Usage</h3>
+ *  the new user account is created and using this, the user can login to his profile later and only the users with the account can access the profile
+	 * 
 	 */
 	public static void createAcc() {
 		System.out.println("Create an account:");
@@ -190,6 +198,7 @@ public class Main {
 	 * <p>
 	 * Displays the option for the user whether to login to his account or create a new account and become an user
 	 * </p>
+	 *  <h3>Usage</h3>
 	 * This is done using a switch case in which the user can choose what to operation to perform
 	 *  and then he is redirected to the option desired
 	 * 
@@ -223,6 +232,8 @@ public class Main {
 	 * <p>
 	 * Displays the login prompt for the user and performs authentication check
 	 * </p>
+	 *  *  <h3>Usage</h3>
+	 *  This can be used by prompting the user to enter the user id and password and check whether it is correct credentials
 	
 	 */
 
